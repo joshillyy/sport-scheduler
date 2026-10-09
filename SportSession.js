@@ -1,0 +1,3 @@
+const mongoose=require("mongoose");
+const sportSessionSchema=new mongoose.Schema({sport:{type:mongoose.Schema.Types.ObjectId,ref:"Sport",required:true},creator:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true},team1:[{type:String,trim:true}],team2:[{type:String,trim:true}],additionalPlayersNeeded:{type:Number,min:0,default:0},joinedPlayers:[{type:mongoose.Schema.Types.ObjectId,ref:"User"}],date:{type:String,required:true},time:{type:String,required:true},venue:{type:String,required:true,trim:true},status:{type:String,enum:["open","cancelled"],default:"open"},cancellationReason:{type:String,default:""},cancelledAt:{type:Date}} ,{timestamps:true});
+module.exports=mongoose.model("SportSession",sportSessionSchema);
